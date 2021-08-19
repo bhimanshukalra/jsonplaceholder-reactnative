@@ -1,17 +1,18 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  parentView: {
-    marginHorizontal: 10,
+  list: {
+    paddingHorizontal: 20,
   },
   itemView: {
-    flexDirection: "row",
-    borderWidth: 1,
+    marginVertical: 10,
+    borderBottomWidth: 0.5,
   },
   itemPrimaryChild: {
     flex: 8,
   },
   itemSecondaryChild: {
     flex: 2,
+    alignSelf: "flex-end",
   },
 });

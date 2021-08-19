@@ -9,19 +9,20 @@ const PostList = ({ posts, getPostList }) => {
     getPostList();
   }, []);
 
-  getItemView = ({ title, userId }) => (
+  getItemView = ({ title, userId, user }) => (
     <View style={styles.itemView}>
       <Text style={styles.itemPrimaryChild}>{title}</Text>
-      <Text style={styles.itemSecondaryChild}>{userId}</Text>
+      <Text style={styles.itemSecondaryChild}>- {user.username}</Text>
     </View>
   );
 
   return (
-    <SafeAreaView style={styles.parentView}>
+    <SafeAreaView>
       <FlatList
         keyExtractor={(item) => `${item.id}`}
         data={posts}
         renderItem={({ item }) => getItemView(item)}
+        style={styles.list}
       />
     </SafeAreaView>
   );
