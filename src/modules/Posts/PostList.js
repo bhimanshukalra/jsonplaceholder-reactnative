@@ -10,6 +10,7 @@ import * as actionCreator from "./redux/actionCreators";
 import { connect } from "react-redux";
 import { styles } from "./Styles";
 import UserList from "../UserList/UserList";
+import { Loader } from "../../util/Loader";
 
 const PostList = ({ posts, getPostList, navigation }) => {
   useEffect(() => {
@@ -36,7 +37,8 @@ const PostList = ({ posts, getPostList, navigation }) => {
   );
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.parent}>
+      {posts.length === 0 ? <Loader /> : null}
       {!showUserDetail ? (
         <FlatList
           keyExtractor={(item) => `${item.id}`}

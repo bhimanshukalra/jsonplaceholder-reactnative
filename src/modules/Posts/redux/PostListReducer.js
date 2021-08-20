@@ -14,7 +14,6 @@ const postListreducer = (state = initialState, action) => {
 
 getPostsAndUsers = (state, { action }) => {
   const response = action.posts.map((post) => {
-    // console.log("post", post.userId, action.users[post.userId - 1].id);
     return { ...post, user: action.users[post.userId - 1] };
   });
 
