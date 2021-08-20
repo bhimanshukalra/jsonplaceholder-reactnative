@@ -5,6 +5,7 @@ import { styles } from "./Styles";
 
 const UserList = ({ user }) => {
   getItemView = ({ username, name, email, website, company }) => {
+    const label = ["Username", "Name", "E-mail", "Website", "Company"];
     return (
       <View style={styles.itemView}>
         <Text style={styles.itemText}>Username: {username}</Text>

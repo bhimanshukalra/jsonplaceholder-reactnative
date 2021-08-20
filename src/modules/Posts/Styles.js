@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import { primaryBg } from "../../util/Colors";
 
 export const styles = StyleSheet.create({
   parent: {
     flex: 1,
+    backgroundColor: primaryBg,
   },
   list: {
     paddingHorizontal: 20,

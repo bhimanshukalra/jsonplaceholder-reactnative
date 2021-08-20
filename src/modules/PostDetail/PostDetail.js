@@ -30,6 +30,7 @@ const PostDetail = ({ post, comments, getCommentList }) => {
       <FlatList
         keyExtractor={(item) => `${item.id}`}
         data={comments}
+        initialNumToRender={20}
         renderItem={({ item }) => getItemView(item)}
         // style={styles.list}
       />

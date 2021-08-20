@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import { primaryBg } from "../../util/Colors";
 
 export const styles = StyleSheet.create({
   parent: {
     paddingHorizontal: 20,
+    backgroundColor: primaryBg,
   },
   itemView: {
     marginVertical: 10,
