@@ -6,8 +6,8 @@ import PostList from "./src/modules/Posts/PostList";
 import UserList from "./src/modules/UserList/UserList";
 
 export default function App() {
-  return <PostDetail />;
-  return <UserList />;
+  // return <PostDetail />;
+  // return <UserList />;
   return <PostList />;
 }
 

@@ -15,4 +15,7 @@ export const styles = StyleSheet.create({
     flex: 2,
     alignSelf: "flex-end",
   },
+  itemText: {
+    fontSize: 16,
+  },
 });

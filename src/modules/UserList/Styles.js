@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  list: {
-    paddingHorizontal: 20,
+  parent: {
+    marginTop: 20,
+    alignItems: "center",
   },
   itemView: {
     marginVertical: 10,
-    borderBottomWidth: 0.5,
   },
   itemPrimaryChild: {
     flex: 8,
