@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { styles } from "./Styles";
 import UserList from "../UserList/UserList";
 import { Loader } from "../../util/Loader";
+import PostDetail from "../PostDetail/PostDetail";
 
 const PostList = ({ posts, getPostList, navigation }) => {
   useEffect(() => {
@@ -18,10 +19,17 @@ const PostList = ({ posts, getPostList, navigation }) => {
   }, []);
 
   const [showUserDetail, setShowUserDetail] = useState(false);
+  const [showPostDetail, setShowPostDetail] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   getItemView = ({ title, userId, user }, index) => (
-    <View style={styles.itemView}>
+    <TouchableOpacity
+      style={styles.itemView}
+      onPress={() => {
+        setShowPostDetail(!showPostDetail);
+        setSelectedIndex(index);
+      }}
+    >
       <Text style={[styles.itemPrimaryChild, styles.itemText]}>{title}</Text>
       <TouchableOpacity
         onPress={() => {
@@ -33,13 +41,13 @@ const PostList = ({ posts, getPostList, navigation }) => {
           - {user.username}
         </Text>
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
     <SafeAreaView style={styles.parent}>
       {posts.length === 0 ? <Loader /> : null}
-      {!showUserDetail ? (
+      {!showUserDetail && !showPostDetail ? (
         <FlatList
           keyExtractor={(item) => `${item.id}`}
           data={posts}
@@ -48,6 +56,7 @@ const PostList = ({ posts, getPostList, navigation }) => {
         />
       ) : null}
       {showUserDetail ? <UserList user={posts[selectedIndex].user} /> : null}
+      {showPostDetail ? <PostDetail post={posts[selectedIndex]} /> : null}
     </SafeAreaView>
   );
 };

@@ -1,3 +1,3 @@
 export const posts = "posts";
 export const users = "users";
-export const comments = "comments";
+export const comments = (id) => `posts/${id}/comments`;

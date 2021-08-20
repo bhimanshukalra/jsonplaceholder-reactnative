@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  list: {
+  parent: {
     paddingHorizontal: 20,
   },
   itemView: {
@@ -12,10 +12,12 @@ export const styles = StyleSheet.create({
     flex: 8,
   },
   itemSecondaryChild: {
-    flex: 2,
     alignSelf: "flex-end",
   },
   itemText: {
     fontSize: 16,
+  },
+  heading: {
+    fontWeight: "600",
   },
 });

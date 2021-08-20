@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import React, { useEffect } from "react";
 import { styles } from "./Styles";
 import * as actionCreator from "./redux/actionCreators";
+import { Loader } from "../../util/Loader";
 
-const PostDetail = ({ posts, getCommentList }) => {
+const PostDetail = ({ post, comments, getCommentList }) => {
   useEffect(() => {
-    // setTimeout(() => console.log("useEffect posts", posts[0]), 1000);
-    getCommentList(posts);
+    getCommentList(post.id);
   }, []);
 
   getItemView = (item) => (
@@ -24,28 +24,45 @@ const PostDetail = ({ posts, getCommentList }) => {
     </View>
   );
 
-  return (
-    <SafeAreaView>
-      {/* <Text>Hello {posts}</Text> */}
+  getCommentsView = () => (
+    <View>
+      <Text style={styles.heading}>Comments:</Text>
       <FlatList
         keyExtractor={(item) => `${item.id}`}
-        data={posts}
+        data={comments}
         renderItem={({ item }) => getItemView(item)}
-        style={styles.list}
+        // style={styles.list}
       />
+    </View>
+  );
+  getPostView = () => (
+    <View style={styles.itemView}>
+      <Text style={styles.itemText}>{post.title}</Text>
+      <View>
+        <Text style={[styles.itemText, styles.itemSecondaryChild]}>
+          - {post.user.username}
+        </Text>
+      </View>
+    </View>
+  );
+  return (
+    <SafeAreaView style={styles.parent}>
+      {getPostView()}
+      {comments.length == 0 ? <Loader /> : getCommentsView()}
     </SafeAreaView>
   );
 };
 
 const mapStateToProps = (state) => {
+  // console.log("state.postDetailReducer.comments", state.postDetailReducer);
   return {
-    posts: state.postListreducer.posts,
+    comments: state.postDetailReducer.comments,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCommentList: (posts) => dispatch(actionCreator.getCommentList(posts)),
+    getCommentList: (id) => dispatch(actionCreator.getCommentList(id)),
   };
 };
 
